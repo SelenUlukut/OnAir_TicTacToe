@@ -4,17 +4,15 @@ import styles from './style';
 import Square from '../square/index';
 
 export default ({
-  size
-}) => (
-  <View style={styles.board}>
-    <Square
-      onPress={() => console.log('button 1')}
-    />
-    <Square
+  size = 3
+}) => {
+  const array = [];
+  for (let i = 0; i < size; i++) {
+    array.push(<Square
       onPress={() => console.log('button 2')}
-    />
-    <Square
-      onPress={() => console.log('button 3')}
-    />
+    />);
+  }
+  return <View style={styles.row}>
+    {array}
   </View>
-);
+}
