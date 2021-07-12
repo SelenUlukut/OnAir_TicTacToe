@@ -2,8 +2,9 @@ import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
   board: {
-    marginVertical: 10,
+    backgroundColor: 'green',
+    marginVertical: 20,
     marginHorizontal: 20,
-    borderRadius: 10,
+    alignSelf: 'center',
   },
 });

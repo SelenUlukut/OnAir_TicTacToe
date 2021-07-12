@@ -17,14 +17,13 @@ export default function App() {
 
 const styles = StyleSheet.create({
   parentStyle: {
-    backgroundColor: '#EEEEBB',
     height: 735,
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
   },
   titleText: {
     alignSelf: 'center',
     padding: 10,
-    fontSize: 30,
-    marginBottom: 50,
+    fontSize: 20,
+    marginTop: 50,
   },
 });

@@ -1,17 +1,12 @@
 import React from 'react';
-import {TouchableOpacity} from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import styles from './style';
 
 export default ({
-  onPress,
-  paddingVertical = 0,
-  paddingHorizontal = 0,
+  onPress
 }) => (
   <TouchableOpacity
-    style={[
-      styles.square,
-      {paddingHorizontal: paddingHorizontal, paddingVertical: paddingVertical},
-    ]}
+    style={styles.square}
     onPress={() => onPress()}>
   </TouchableOpacity>
 );
