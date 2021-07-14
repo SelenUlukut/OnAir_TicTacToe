@@ -10,6 +10,8 @@ const Main = ({ board, setBoardSize }) => {
     <View style={styles.parentStyle}>
       <Text style={styles.titleText}>Tic Tac Toe</Text>
       <Board />
+      <Text style={styles.titleText}>PLAYER: {board.turn}</Text>
+      <Text style={styles.titleText}>{board.winner}</Text>
     </View>
   );
 }
