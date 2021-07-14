@@ -9,7 +9,7 @@ export default StyleSheet.create({
     alignSelf: 'center',
     padding: 10,
     fontSize: 20,
-    marginTop: 50,
+    marginTop: 50
   },
 });
 

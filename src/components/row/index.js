@@ -1,14 +1,15 @@
 import React from 'react';
-import {View} from 'react-native';
+import { View } from 'react-native';
 import Square from '@components/Square';
 import styles from './style';
 
-
-export default ({size = 3}) => {
+export default ({ size = 3, row }) => {
   const array = [];
-  for (let i = 0;i < size;i++) {
+  for (let i = 0; i < size; i++) {
     array.push(<Square
       onPress={() => console.log('button 2')}
+      row={row}
+      column={i}
     />);
   }
   return (

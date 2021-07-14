@@ -1,13 +1,28 @@
 import React from 'react';
-import { TouchableOpacity, Dimensions, Platform } from 'react-native';
+import { TouchableOpacity, Text, Dimensions } from 'react-native';
+import { connect } from 'react-redux';
 import styles from './style';
+import { setSquare } from '@actions/board';
 
-export default ({
-  onPress,
-  size
+const Square = ({
+  size,
+  row,
+  column,
+  board,
+  setSquare
 }) => (
   <TouchableOpacity
     style={styles.square}
-    onPress={() => onPress()}>
+    onPress={() => setSquare({ i: row, j: column })}>
+    <Text style={styles.squareText}>{board.gameBoard[row][column]}</Text>
   </TouchableOpacity>
 );
+
+
+const mapStateToProps = (state) => ({
+  board: state.board,
+});
+
+export default connect(mapStateToProps, {
+  setSquare,
+})(Square);
