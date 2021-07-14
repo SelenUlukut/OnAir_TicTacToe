@@ -4,11 +4,11 @@ import styles from './style';
 import { connect } from 'react-redux';
 import { refreshBoard } from '@actions/board';
 
-const Win = ({ size, refreshBoard, visible, winner }) => (
+const Win = ({board , refreshBoard, visible, winner }) => (
   <Modal visible={visible} transparent>
     <View style={styles.modalViewBackground}>
       <View style={styles.modalView}>
-        <Text style={styles.modalText}>{winner} WIN !</Text>
+        <Text style={styles.modalText}>{winner === 'TIE' ? 'TIE' : `${winner} WIN !!!`}</Text>
         <TouchableOpacity style={styles.modalButton}>
           <Text
             style={styles.modalText}
@@ -26,7 +26,7 @@ const Win = ({ size, refreshBoard, visible, winner }) => (
 
 
 const mapStateToProps = (state) => ({
-  size: state.size,
+  board: state.board,
 });
 
 export default connect(mapStateToProps, {

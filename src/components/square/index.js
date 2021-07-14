@@ -4,19 +4,27 @@ import styles from './style';
 import { connect } from 'react-redux';
 import { setSquare } from '@actions/board';
 
+const boardWidth = Dimensions.get('window').width-50;
+
 const Square = ({
-  size,
   row,
   column,
   board,
   setSquare
-}) => (
-  <TouchableOpacity
-    style={styles.square}
-    onPress={() => setSquare({ i: row, j: column })}>
-    <Text style={styles.squareText}>{board.gameBoard[row][column]}</Text>
-  </TouchableOpacity>
-);
+}) => {
+  const style = {
+    height: boardWidth/board.size,
+    width: boardWidth/board.size,
+  }
+  return(
+    <TouchableOpacity
+      style={[styles.square, style]}
+      disabled={!board.started}
+      onPress={() => setSquare({ i: row, j: column })}>
+      <Text style={styles.squareText}>{board.started ? board.gameBoard[row][column] : ''}</Text>
+    </TouchableOpacity> 
+  )
+};
 
 
 const mapStateToProps = (state) => ({

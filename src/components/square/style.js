@@ -5,7 +5,7 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#EE5555',
-    borderWidth: 2,
+    borderWidth: 1,
     borderColor: 'black',
     height:100,
     width: 100

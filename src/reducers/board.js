@@ -1,7 +1,10 @@
-import { SET_BOARD_SIZE, SET_SQUARE, REFRESH_BOARD } from '@actions/types';
+import { SET_BOARD_SIZE, SET_SQUARE, REFRESH_BOARD, START_GAME } from '@actions/types';
+import Board from '@components/Board';
+
+// const initializeGame = (size = 3) => new Array(size).fill(new Array(size).fill(''));
 
 const initializeGame = (size = 3) => {
-  const gameBoard = [];
+  const gameBoard = new Array(size).fill(0);
   for (let i = 0; i < size; i++) {
     gameBoard[i] = [];
     for (let j = 0; j < size; j++) {
@@ -12,6 +15,7 @@ const initializeGame = (size = 3) => {
 };
 
 const initialState = {
+  started: false,
   size: 3,
   gameBoard: initializeGame(),
   turn: 'X',
@@ -28,16 +32,16 @@ const winnerCheck = (state) => {
     let countColumnX = 0;
     let countColumnO = 0;
     while (j < state.size) {
-      countRowX = state.gameBoard[i][j] == 'X' ? countRowX + 1 : countRowX;
-      countRowO = state.gameBoard[i][j] == 'O' ? countRowO + 1 : countRowO;
-      countColumnX = state.gameBoard[j][i] == 'X' ? countColumnX + 1 : countColumnX;
-      countColumnO = state.gameBoard[j][i] == 'O' ? countColumnO + 1 : countColumnO;
+      countRowX = state.gameBoard[i][j] === 'X' ? countRowX + 1 : countRowX;
+      countRowO = state.gameBoard[i][j] === 'O' ? countRowO + 1 : countRowO;
+      countColumnX = state.gameBoard[j][i] === 'X' ? countColumnX + 1 : countColumnX;
+      countColumnO = state.gameBoard[j][i] === 'O' ? countColumnO + 1 : countColumnO;
       j++
     }
-    if (countRowX == state.size || countColumnX == state.size) {
+    if (countRowX == state.size || countColumnX === state.size) {
       winner = 'X';
     }
-    if (countRowO == state.size || countColumnO == state.size) {
+    if (countRowO == state.size || countColumnO === state.size) {
       winner = 'O';
     }
     i++;
@@ -52,14 +56,28 @@ const winnerCheck = (state) => {
   for (i = 0; i < state.size; i++) {
     countR2LX = state.gameBoard[i][i] == 'X' ? countR2LX + 1 : countR2LX;
     countR2LO = state.gameBoard[i][i] == 'O' ? countR2LO + 1 : countR2LO;
-    countL2RX = state.gameBoard[i][state.size - i - 1] == 'X' ? countL2RX + 1 : countL2RX;
-    countL2RO = state.gameBoard[i][state.size - i - 1] == 'O' ? countL2RO + 1 : countL2RO;
+    countL2RX = state.gameBoard[i][state.size - i - 1] === 'X' ? countL2RX + 1 : countL2RX;
+    countL2RO = state.gameBoard[i][state.size - i - 1] === 'O' ? countL2RO + 1 : countL2RO;
   }
   if (countR2LX == state.size || countL2RX == state.size) {
     winner = 'X';
   }
   if (countR2LO == state.size || countL2RO == state.size) {
     winner = 'O';
+  }
+  let tie = true;
+  for(let i = 0; i < state.size; i++) {
+    for(let j = 0; j < state.size; j++) {
+      console.log(state.gameBoard[i][j] === '')
+      if(state.gameBoard[i][j] === '') {
+        console.log('NOT A TIE')
+        tie=false;
+        break;
+      }
+    }
+  }
+  if (tie) {
+    return 'TIE'
   }
   return winner;
 }
@@ -75,7 +93,7 @@ export default (state = initialState, action) => {
         state.gameBoard[action.payload.i][action.payload.j] = state.turn === 'X' ? 'X' : 'O';
         const winner = winnerCheck(state);
         if (winner) {
-          return { ...state, winner };
+          return { ...state, winner, started: true };
         }
         state.turn = state.turn === 'X' ? 'O' : 'X';
       }
@@ -83,11 +101,14 @@ export default (state = initialState, action) => {
     case REFRESH_BOARD:
       state = {
         size: 3,
-        gameBoard: initializeGame(),
+        gameBoard: initializeGame(3),
         turn: 'X',
         winner: null
       };
       return state;
+    case START_GAME:
+      console.log(initializeGame())
+      return { ...state, started: true,  gameBoard: initializeGame(state.size)};
     default:
       return state;
   }

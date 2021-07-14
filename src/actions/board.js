@@ -1,4 +1,4 @@
-import {SET_BOARD_SIZE, SET_SQUARE, REFRESH_BOARD} from './types';
+import {SET_BOARD_SIZE, SET_SQUARE, REFRESH_BOARD, START_GAME} from './types';
 
 export const setBoardSize = (data) => ({
   type: SET_BOARD_SIZE,
@@ -10,6 +10,10 @@ export const setSquare = (data) => ({
   payload: data,
 });
 
-export const refreshBoard = (data) => ({
+export const refreshBoard = () => ({
   type: REFRESH_BOARD
+});
+
+export const starGame = () => ({
+  type: START_GAME
 });
