@@ -8,7 +8,6 @@ export default ({ size = 3, row }) => {
   for (let i = 0; i < size; i++) {
     array.push(
       <Square
-        onPress={() => console.log('button 2')}
         row={row}
         column={i}
         key={i}

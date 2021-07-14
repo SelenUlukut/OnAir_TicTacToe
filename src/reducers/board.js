@@ -68,9 +68,7 @@ const winnerCheck = (state) => {
   let tie = true;
   for(let i = 0; i < state.size; i++) {
     for(let j = 0; j < state.size; j++) {
-      console.log(state.gameBoard[i][j] === '')
       if(state.gameBoard[i][j] === '') {
-        console.log('NOT A TIE')
         tie=false;
         break;
       }
@@ -85,10 +83,8 @@ const winnerCheck = (state) => {
 export default (state = initialState, action) => {
   switch (action.type) {
     case SET_BOARD_SIZE:
-      console.log('SET_BOARD_SIZE');
       return { ...state, size: action.payload };
     case SET_SQUARE:
-      console.log('SET_SQUARE');
       if (!state.gameBoard[action.payload.i][action.payload.j]) {
         state.gameBoard[action.payload.i][action.payload.j] = state.turn === 'X' ? 'X' : 'O';
         const winner = winnerCheck(state);
@@ -107,7 +103,6 @@ export default (state = initialState, action) => {
       };
       return state;
     case START_GAME:
-      console.log(initializeGame())
       return { ...state, started: true,  gameBoard: initializeGame(state.size)};
     default:
       return state;
