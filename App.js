@@ -1,26 +1,15 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
-import Board from './src/components/board/index';
+import {Provider} from 'react-redux';
+import {createStore} from 'redux';
+import reducer from '@reducers/index';
+import Main from '@screens/Main';
 
-export default function App() {
+const store = createStore(reducer);
+
+export default function () {
   return (
-    <View style={styles.parentStyle}>
-      <Text style={styles.titleText}>Tic Tac Toe</Text>
-      <Board />
-      
-    </View>
-  );
+    <Provider store={store} >
+      <Main />
+    </Provider>
+  )
 }
-
-const styles = StyleSheet.create({
-  parentStyle: {
-    height: 735,
-    justifyContent: 'flex-start',
-  },
-  titleText: {
-    alignSelf: 'center',
-    padding: 10,
-    fontSize: 20,
-    marginTop: 50,
-  },
-});

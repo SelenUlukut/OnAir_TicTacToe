@@ -1,9 +1,10 @@
 import React from 'react';
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity, Dimensions, Platform } from 'react-native';
 import styles from './style';
 
 export default ({
-  onPress
+  onPress,
+  size
 }) => (
   <TouchableOpacity
     style={styles.square}
