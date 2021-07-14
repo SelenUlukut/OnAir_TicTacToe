@@ -1,5 +1,4 @@
-import { SET_BOARD_SIZE, SET_SQUARE } from '@actions/types';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
+import { SET_BOARD_SIZE, SET_SQUARE, REFRESH_BOARD } from '@actions/types';
 
 const initializeGame = (size = 3) => {
   const gameBoard = [];
@@ -81,6 +80,14 @@ export default (state = initialState, action) => {
         state.turn = state.turn === 'X' ? 'O' : 'X';
       }
       return { ...state, turn: state.turn };
+    case REFRESH_BOARD:
+      state = {
+        size: 3,
+        gameBoard: initializeGame(),
+        turn: 'X',
+        winner: null
+      };
+      return state;
     default:
       return state;
   }

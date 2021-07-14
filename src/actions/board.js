@@ -1,5 +1,4 @@
-import {SET_BOARD_SIZE} from './types';
-import {SET_SQUARE} from './types';
+import {SET_BOARD_SIZE, SET_SQUARE, REFRESH_BOARD} from './types';
 
 export const setBoardSize = (data) => ({
   type: SET_BOARD_SIZE,
@@ -9,4 +8,8 @@ export const setBoardSize = (data) => ({
 export const setSquare = (data) => ({
   type: SET_SQUARE,
   payload: data,
+});
+
+export const refreshBoard = (data) => ({
+  type: REFRESH_BOARD
 });

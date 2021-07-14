@@ -1,7 +1,7 @@
 import React from 'react';
 import { TouchableOpacity, Text, Dimensions } from 'react-native';
-import { connect } from 'react-redux';
 import styles from './style';
+import { connect } from 'react-redux';
 import { setSquare } from '@actions/board';
 
 const Square = ({
