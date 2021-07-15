@@ -1,42 +1,46 @@
 import {StyleSheet} from 'react-native';
+import scale from '../../util/scale';
 
 export default StyleSheet.create({
   parentStyle: {
-    height: 735,
+    height: scale(838),
     justifyContent: 'flex-start',
     justifyContent: 'center',
   },
   titleText: {
     alignSelf: 'center',
-    padding: 10,
-    fontSize: 20,
-    marginTop: 10
+    padding: scale(10),
+    fontSize: scale(20),
+    marginTop: scale(10)
   },
   image: {
-    width: 200,
-    height: 100,
+    width: scale(200),
+    height: scale(100),
     alignSelf: 'center',
     resizeMode: 'contain',
-    marginTop: 40
   },
   styleBoardSizeController: {
     flexDirection: 'row',
     justifyContent: 'center',
   },
   button: {
-    width: 50,
-    height: 50,
+    width: scale(50),
+    height: scale(50),
     alignItems: 'center',
     justifyContent: 'center'
   },
   buttonText: {
-    fontSize:20,
+    fontSize:scale(20),
   },
   startButton: {
     width: '80%',
-    height: 50,
-    borderRadius: 20,
-    backgroundColor: 'red',
+    height: scale(50),
+    borderRadius: 50,
+    backgroundColor: '#EE4444',
+    borderRadius: 50,
+    height: scale(50),
+    width: scale(300),
+    marginVertical: scale(50),
     alignSelf: 'center',
     alignItems: 'center',
     justifyContent: 'center',

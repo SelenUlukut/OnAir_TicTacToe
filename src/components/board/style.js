@@ -1,9 +1,10 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
+import scale from '../../util/scale';
 
 export default StyleSheet.create({
   board: {
-    marginVertical: 20,
-    marginHorizontal: 20,
+    marginVertical: scale(20),
+    marginHorizontal: scale(20),
     alignSelf: 'center',
     justifyContent: 'flex-start'
   },
