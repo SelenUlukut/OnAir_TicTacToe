@@ -1,30 +1,31 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
+import scale from '../../util/scale';
 
 export default StyleSheet.create({
   modalViewBackground: {
     backgroundColor: 'rgba(0,0,0,0.5)',
-    height: 1000,
+    height: scale(1000),
     justifyContent: 'center'
   },
   modalText: {
-    fontSize: 25,
+    fontSize: scale(25),
   },
   modalView: {
     backgroundColor: 'white',
-    marginBottom: 300,
-    marginHorizontal: 30,
-    height: 400,
+    marginBottom: scale(300),
+    marginHorizontal: scale(30),
+    height: scale(400),
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 50
   },
   modalButton: {
-    marginTop: 150,
+    marginTop: scale(150),
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#EE5555',
+    backgroundColor: '#EE4444',
     borderRadius: 50,
-    height:70,
-    width: 200
+    height: scale(60),
+    width: scale(200)
   }
 });
